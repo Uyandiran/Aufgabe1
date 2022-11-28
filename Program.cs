@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Net.Http;
+using Newtonsoft.Json;
 
 namespace Aufgabe1
 {
@@ -21,7 +22,9 @@ namespace Aufgabe1
             HttpResponseMessage httpResponse = httpClient.GetAsync(requestUri).Result;
 
             string response = httpResponse.Content.ReadAsStringAsync().Result;
-            Console.WriteLine(response);
+            OpenWeatherMapData openWeatherMapData = JsonConvert.DeserializeObject<OpenWeatherMapData>(response);
+
+            Console.WriteLine(openWeatherMapData.main.temp);
             Console.ReadKey();
 
 
