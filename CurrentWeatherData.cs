@@ -4,8 +4,8 @@ using System.Text;
 
 namespace Aufgabe1
 {
-    class OpenWeatherMapData
-    {
+    class CurrentWeatherData
+    {        
         public Main main;
     }
 
