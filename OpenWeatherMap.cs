@@ -11,13 +11,17 @@ namespace Aufgabe1
     {
         public OpenWeatherMap()
         {
+            //Eigentlich sollte die URI und der API-Key in die App.config file, nur funktioniert es derzeit leider nicht.
+            //requestUri = System.Configuration.ConfigurationManager.AppSettings["requestUri"]+"&units=metric";
+            //key = System.Configuration.ConfigurationManager.AppSettings["key"];
+
             requestUri = "https://api.openweathermap.org/data/2.5/weather?q={city name}&appid={API key}&units=metric";
             key = "c2b238d710aa8593924a3d04ba80ca97";
 
             requestUri = requestUri.Replace("{API key}", key);
             httpResponse = null;
             response = null;
-            httpClient  = new HttpClient();
+            httpClient  = null;
         }
 
         private string generateURI(string stadt)
@@ -27,7 +31,6 @@ namespace Aufgabe1
 
         public void openWeatherMapRequest(string stadt)
         {
-            //Füge den Namen der Stadt in den String hinzu.
             string str = generateURI(stadt);
             httpClient = new HttpClient();
             httpResponse = httpClient.GetAsync(str).Result;
