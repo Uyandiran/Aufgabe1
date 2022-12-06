@@ -10,14 +10,10 @@ namespace Aufgabe1
     class OpenWeatherMap
     {
         public OpenWeatherMap()
-        {
-            //Eigentlich sollte die URI und der API-Key in die App.config file, nur funktioniert es derzeit leider nicht.
-            //requestUri = System.Configuration.ConfigurationManager.AppSettings["requestUri"]+"&units=metric";
-            //key = System.Configuration.ConfigurationManager.AppSettings["key"];
-
-            requestUri = "https://api.openweathermap.org/data/2.5/weather?q={city name}&appid={API key}&units=metric";
-            key = "c2b238d710aa8593924a3d04ba80ca97";
-
+        {            
+            requestUri = System.Configuration.ConfigurationManager.AppSettings["requestUri"].ToString()+"&units=metric";
+            key = System.Configuration.ConfigurationManager.AppSettings["OpenWeatherMapKey"].ToString();
+                        
             requestUri = requestUri.Replace("{API key}", key);
             httpResponse = null;
             response = null;
@@ -41,8 +37,13 @@ namespace Aufgabe1
         public string toString()
         {
             str = "Die aktuelle Temperatur beträgt: " + currentWeatherData.main.temp + " grad Celsius, die tiefst Temperatur liegt heute bei : " + 
-                currentWeatherData.main.temp_min + " grad Celsius, die höchst Temperatur bei: "+ currentWeatherData.main.temp_max+" grad Celsius";
+                currentWeatherData.main.temp_min + " grad Celsius und die höchst Temperatur bei: "+ currentWeatherData.main.temp_max+" grad Celsius";
             return str;
+        }
+
+        private void SaveToFile()
+        {
+
         }
         
         private string str;

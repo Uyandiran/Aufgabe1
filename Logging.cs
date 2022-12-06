@@ -9,9 +9,9 @@ namespace Aufgabe1
     {
         public static void WriteLog(string message)
         {
-            string logPath = System.Configuration.ConfigurationManager.AppSettings["LogPath"];
-            StreamWriter writer = new StreamWriter(logPath, true);
-            writer.WriteLine($"{DateTime.Now}:" + message);        
+            //string logPath = System.Configuration.ConfigurationManager.AppSettings["LogPath"];
+            //StreamWriter writer = new StreamWriter(logPath, true);
+            //writer.WriteLine($"{DateTime.Now}:" + message);        
         }
     }    
 }
